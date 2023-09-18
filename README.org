@@ -1,0 +1,6 @@
+* Introduction
+
+There was some discussion about the difficulties of attaching seqspecs
+to fastqs.
+
+I thought I should share my prototype code to help others.
