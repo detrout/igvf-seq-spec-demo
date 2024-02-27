@@ -4,3 +4,11 @@ There was some discussion about the difficulties of attaching seqspecs
 to fastqs.
 
 I thought I should share my prototype code to help others.
+
+* References
+
+seqspec jamboree presentation
+https://docs.google.com/presentation/d/1t0ASLfeM1YY9bDTy2a9lfU1Y7OKmp6BM_x7cPlANWos/edit#slide=id.g2bb87451c50_0_437
+
+seqspec builder
+https://pachterlab.github.io/seqspec/assays.html
