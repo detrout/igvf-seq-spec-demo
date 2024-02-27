@@ -1,0 +1,71 @@
+* Uploading files without saving them.
+
+The typical upload path involved aws s3 cp, which doesn't work well if
+you don't want to just generate small files on the fly and then post
+them.
+
+The DACC suggested trying boto3 and gave me this
+
+My typical upload process for fastqs eventually calls aws s3 cp for
+the upload, and I didn't want to create scores of tiny files to
+upload, so I asked for advice how to directly upload blocks of memory
+to S3 without having to save the file.
+
+Keenan at the IGVF DACC suggested looking at
+https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html#examples
+“Uploading a local file stream to S3” for one possible example of how
+to upload a file from an object in memory.
+
+The block below is the the most example most relevant
+
+#+begin_src python
+import boto3
+import requests
+from botocore.exceptions import NoCredentialsError
+
+def upload_stream(bucket_name, url, key, access_key, secret_key, session_token):
+    s3 = boto3.client('s3', aws_access_key_id=access_key, aws_secret_access_key=secret_key, aws_session_token=session_token)
+
+    with requests.get(url, stream=True) as r:
+        r.raise_for_status()
+        try:
+            s3.upload_fileobj(r.raw, bucket_name, key)
+        except NoCredentialsError:
+            print("Credentials not available")
+        except Exception as e:
+            print(e)
+
+# Usage
+access_key = "your_access_key"
+secret_key = "your_secret_key"
+session_token = "your_session_token"
+upload_stream('my-bucket', 'http://example.com/largefile.zip', 'my_s3_key', access_key, secret_key, session_token)
+#+end_src
+
+That lead to a smaller example. The credentials are returned in the
+@graph returned when creating a new object, in the
+"upload_credentials" attribute.
+
+#+begin_src python
+  credentials = {
+      'session_token': None,
+      'access_key': None,
+      'expiration': '2023-08-30T05:47:33+00:00',
+      'secret_key': None,
+      'upload_url': 's3://igvf-files-staging/2023/08/28/23c7e5ce-614c-4b05-91ea-1e92690e27c6/TSTFI70244117.yaml',
+      'federated_user_arn': 'arn:aws:sts::920073238245:federated-user/up1693244853.500758-TSTFI7024411',
+      'federated_user_id': '920073238245:up1693244853.500758-TSTFI7024411',
+      'request_id': '5e0de40c-13a2-4485-b52c-c71d1dc364a4'
+  }
+
+  s3_client = boto3.client(
+      's3',
+      aws_access_key_id=credentials["access_key"],
+      aws_secret_access_key=credentials["secret_key"],
+      aws_session_token=credentials["session_token"])
+
+  s3_client.upload_fileobj(
+      BytesIO(example_yaml.encode("utf-8")),
+      "igvf-files-staging",
+      "2023/08/28/23c7e5ce-614c-4b05-91ea-1e92690e27c6/TSTFI70244117.yaml")
+#+end_src
