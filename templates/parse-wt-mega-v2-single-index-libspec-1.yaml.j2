@@ -184,17 +184,6 @@ library_spec:
         md5: {{ barcode_3_md5 }}
       regions: null
       parent_id: {{ read2_accession }}
-    - !Region
-      region_id: umi
-      region_type: umi
-      name: umi
-      sequence_type: random
-      sequence: NNNNNNNNNN
-      min_len: 10
-      max_len: 10
-      onlist: null
-      regions: null
-      parent_id: {{ read2_accession }}
   - !Region
     region_id: truseq_read2
     region_type: truseq_read2
