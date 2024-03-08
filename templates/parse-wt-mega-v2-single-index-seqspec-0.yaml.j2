@@ -66,6 +66,10 @@ assay_spec:
       onlist: null
       regions: null
       parent_id: {{ read1_accession }}.fastq.gz
+# The order of the elements in the read2 fastq is backwards compared
+# to the order of the full library construct.
+# The 0th base of read2 is from the right most side of the construct
+# and is counting down toward the read 1.
   - !Region
     region_id: {{ read2_accession }}.fastq.gz
     region_type: fastq
@@ -89,17 +93,17 @@ assay_spec:
       regions: null
       parent_id: {{ read2_accession }}.fastq.gz
     - !Region
-      region_id: barcode-1
+      region_id: barcode-3
       region_type: barcode
-      name: barcode-1
+      name: barcode-3
       sequence_type: onlist
       sequence: NNNNNNNN
       min_len: 8
       max_len: 8
       onlist: !Onlist
         location: remote
-        filename: {{ barcode_1_url }}
-        md5: {{ barcode_1_md5 }}
+        filename: {{ barcode_3_url }}
+        md5: {{ barcode_3_md5 }}
       regions: null
       parent_id: {{ read2_accession }}.fastq.gz
     - !Region
@@ -139,17 +143,17 @@ assay_spec:
       regions: null
       parent_id: {{ read2_accession }}.fastq.gz
     - !Region
-      region_id: barcode-3
+      region_id: barcode-1
       region_type: barcode
-      name: barcode-3
+      name: barcode-1
       sequence_type: onlist
       sequence: NNNNNNNN
       min_len: 8
       max_len: 8
       onlist: !Onlist
         location: remote
-        filename: {{ barcode_3_url }}
-        md5: {{ barcode_3_md5 }}
+        filename: {{ barcode_1_url }}
+        md5: {{ barcode_1_md5 }}
       regions: null
       parent_id: {{ read2_accession }}
   - !Region
