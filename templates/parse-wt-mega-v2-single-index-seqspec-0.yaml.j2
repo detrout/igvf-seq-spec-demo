@@ -101,7 +101,7 @@ assay_spec:
       min_len: 8
       max_len: 8
       onlist: !Onlist
-        location: remote
+        location: {{ barcode_3_location }}
         filename: {{ barcode_3_url }}
         md5: {{ barcode_3_md5 }}
       regions: null
@@ -126,7 +126,7 @@ assay_spec:
       min_len: 8
       max_len: 8
       onlist: !Onlist
-        location: remote
+        location: {{ barcode_2_location }}
         filename: {{ barcode_2_url }}
         md5: {{ barcode_2_md5 }}
       regions: null
@@ -151,7 +151,7 @@ assay_spec:
       min_len: 8
       max_len: 8
       onlist: !Onlist
-        location: remote
+        location: {{ barcode_1_location }}
         filename: {{ barcode_1_url }}
         md5: {{ barcode_1_md5 }}
       regions: null
