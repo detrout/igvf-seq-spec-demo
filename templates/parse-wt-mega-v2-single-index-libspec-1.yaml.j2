@@ -139,9 +139,9 @@ library_spec:
       region_type: linker
       name: linker-1
       sequence_type: fixed
-      sequence: GTGGCCGATGTTTCGCATCGGCGTACGACT
-      min_len: 30
-      max_len: 30
+      sequence: ATCCACGTGCTTGAGACTGTGG
+      min_len: 22
+      max_len: 22
       onlist: null
       regions: null
       parent_id: {{ read2_accession }}
@@ -160,13 +160,13 @@ library_spec:
       regions: null
       parent_id: {{ read2_accession }}
     - !Region
-      region_id: linker-3
+      region_id: linker-2
       region_type: linker
-      name: linker-3
+      name: linker-2
       sequence_type: fixed
-      sequence: ATCCACGTGCTTGAGACTGTGG
-      min_len: 22
-      max_len: 22
+      sequence: GTGGCCGATGTTTCGCATCGGCGTACGACT
+      min_len: 30
+      max_len: 30
       onlist: null
       regions: null
       parent_id: {{ read2_accession }}
@@ -182,6 +182,17 @@ library_spec:
         location: {{ barcode_3_location }}
         filename: {{ barcode_3_url }}
         md5: {{ barcode_3_md5 }}
+      regions: null
+      parent_id: {{ read2_accession }}
+    - !Region
+      region_id: umi
+      region_type: umi
+      name: umi
+      sequence_type: random
+      sequence: NNNNNNNNNN
+      min_len: 10
+      max_len: 10
+      onlist: null
       regions: null
       parent_id: {{ read2_accession }}
   - !Region
