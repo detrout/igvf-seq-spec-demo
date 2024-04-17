@@ -1,0 +1,95 @@
+!Assay
+seqspec_version: 0.0.0
+assay: MPRA
+sequencer: Illumina
+name: MPRA
+doi: null
+publication_date: null
+description: MPRA
+modalities:
+- assignment
+lib_struct: null
+sequence_spec:
+- !Read
+  read_id: IGVF_neuro_S1_R1_001.fastq.gz
+  read_name: Read 1
+  modality: assignment
+  primer_id: adapter_fwd
+  min_len: 146
+  max_len: 146
+  strand: pos
+- !Read
+  read_id: IGVF_neuro_S1_R2_001.fastq.gz
+  read_name: Read 2
+  modality: assignment
+  primer_id: adapter_rev
+  min_len: 15
+  max_len: 15
+  strand: pos
+- !Read
+  read_id: IGVF_neuro_S1_R3_001.fastq.gz
+  read_name: Read 3
+  modality: assignment
+  primer_id: adapter_rev
+  min_len: 146
+  max_len: 146
+  strand: neg
+library_spec:
+- !Region
+  parent_id: null
+  region_id: assignment
+  region_type: gdna
+  name: Assignment
+  sequence_type: joined
+  sequence: AGGACCGGATCAACTNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNCATTGCGTGAACCGAXXXXXXXXXXXXXXX
+  min_len: 315
+  max_len: 315
+  onlist: null
+  regions:
+  - !Region
+    parent_id: assignment
+    region_id: adapter_fwd
+    region_type: linker
+    name: Forward adapter
+    sequence_type: fixed
+    sequence: AGGACCGGATCAACT
+    min_len: 15
+    max_len: 15
+    onlist: null
+    regions: null
+  - !Region
+    parent_id: assignment
+    region_id: designed_sequence
+    region_type: gdna
+    name: Designed oligo sequence for testing
+    sequence_type: onlist
+    sequence: NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+    min_len: 270
+    max_len: 270
+    onlist: !Onlist
+      filename: /fast/groups/ag_kircher/work/MPRA/IGVF_Y1_design/final_design/results/final_design/design.fa.gz
+      location: local
+      md5: 5a34f80819cc26f33f641c9aad70be09
+    regions: null
+  - !Region
+    parent_id: assignment
+    region_id: adapter_rev
+    region_type: linker
+    name: Reverse adapter
+    sequence_type: fixed
+    sequence: CATTGCGTGAACCGA
+    min_len: 15
+    max_len: 15
+    onlist: null
+    regions: null
+  - !Region
+    parent_id: assignment
+    region_id: barcode
+    region_type: barcode
+    name: Barcode
+    sequence_type: random
+    sequence: XXXXXXXXXXXXXXX
+    min_len: 15
+    max_len: 15
+    onlist: null
+    regions: null
