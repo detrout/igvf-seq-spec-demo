@@ -55,7 +55,7 @@ sequence_spec:
   max_len: 8
   strand: pos
 - !Read
-  read_id: {{ ATAC_fastq_R2 }}
+  read_id: {{ ATAC_barcode }}
   name: Technicall index 2 (i5 index), but called R2
   modality: atac
   primer_id: atac-nextera_read1
@@ -63,7 +63,7 @@ sequence_spec:
   max_len: 24
   strand: neg
 - !Read
-  read_id: {{ ATAC_fastq_R3 }}
+  read_id: {{ ATAC_fastq_R2 }}
   name: Read 2
   modality: atac
   primer_id: atac-nextera_read2

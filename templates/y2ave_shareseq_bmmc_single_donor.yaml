@@ -24,7 +24,7 @@ sequence_spec:
   max_len: 50
   strand: pos
 - !Read
-  read_id: {{ ATAC_fastq_R2 }}
+  read_id: {{ ATAC_barcode }}
   name: Read 2 (technically Index 1 (i7 index))
   modality: atac
   primer_id: atac-truseq_read2
@@ -32,7 +32,7 @@ sequence_spec:
   max_len: 149
   strand: pos
 - !Read
-  read_id: {{ ATAC_fastq_R3 }}
+  read_id: {{ ATAC_fastq_R2 }}
   name: Read 3 (but technical R2)
   modality: atac
   primer_id: atac-truseq_read2
