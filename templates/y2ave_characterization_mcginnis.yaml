@@ -16,7 +16,7 @@ sequence_protocol: Illumina NovaSeq 6000
 sequence_kit: NovaSeq 6000 v1.5
 sequence_spec:
 - !Read
-  read_id: small_GEX_1_S41_L007_R1_001.fastq.gz
+  read_id: {{ RNA_fastq_R1 }}
   name: Read 1
   modality: rna
   primer_id: rna-truseq_read1
@@ -32,7 +32,7 @@ sequence_spec:
   max_len: 8
   strand: pos
 - !Read
-  read_id: small_GEX_1_S41_L007_R2_001.fastq.gz
+  read_id: {{ RNA_fastq_R2 }}
   name: Read 2
   modality: rna
   primer_id: rna-truseq_read2
@@ -40,7 +40,7 @@ sequence_spec:
   max_len: 90
   strand: neg
 - !Read
-  read_id: small_ATAC_1_S358_L007_R1_001.fastq.gz
+  read_id: {{ ATAC_fastq_R1 }}
   name: Read 1
   modality: atac
   primer_id: atac-nextera_read1
@@ -56,7 +56,7 @@ sequence_spec:
   max_len: 8
   strand: pos
 - !Read
-  read_id: small_ATAC_1_S358_L007_R2_001.fastq.gz
+  read_id: {{ ATAC_barcode }}
   name: Read 2 (technically Index 2 (i5 index))
   modality: atac
   primer_id: atac-nextera_read1
@@ -64,7 +64,7 @@ sequence_spec:
   max_len: 24
   strand: neg
 - !Read
-  read_id: small_ATAC_1_S358_L007_R3_001.fastq.gz
+  read_id: {{ ATAC_fastq_R2 }}
   name: Read 3 (technically Read 2)
   modality: atac
   primer_id: atac-nextera_read2
@@ -72,7 +72,7 @@ sequence_spec:
   max_len: 98
   strand: neg
 - !Read
-  read_id: small_MULTI_1_S44_L007_R1_001.fastq.gz
+  read_id: {{ MULTI_fastq_R1 }}
   name: Read 1
   modality: tag
   primer_id: multi-truseq_read1
@@ -88,7 +88,7 @@ sequence_spec:
   max_len: 8
   strand: pos
 - !Read
-  read_id: small_MULTI_1_S44_L007_R2_001.fastq.gz
+  read_id: {{ MULTI_fastq_R2 }}
   name: Read 2
   modality: tag
   primer_id: multi-truseq_read2
