@@ -22,6 +22,14 @@ sequence_spec:
   max_len: 150
   strand: pos
 - !Read
+  read_id: I1.fastq.gz
+  name: Index 1 (i7 index)
+  modality: rna
+  primer_id: truseq_read2
+  min_len: 8
+  max_len: 8
+  strand: pos
+- !Read
   read_id: {{ RNA_fastq_R2 }}
   name: Read 2
   modality: rna
