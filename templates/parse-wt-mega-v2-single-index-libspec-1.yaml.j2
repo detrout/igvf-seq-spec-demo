@@ -121,17 +121,17 @@ library_spec:
     onlist: null
     regions:
     - !Region
-      region_id: barcode-1
+      region_id: barcode-3
       region_type: barcode
-      name: barcode-1
+      name: barcode-3
       sequence_type: onlist
       sequence: NNNNNNNN
       min_len: 8
       max_len: 8
       onlist: !Onlist
-        location: {{ barcode_1_location }}
-        filename: {{ barcode_1_url }}
-        md5: {{ barcode_1_md5 }}
+        location: {{ barcode_3_location }}
+        filename: {{ barcode_3_url }}
+        md5: {{ barcode_3_md5 }}
       regions: null
       parent_id: {{ read2_accession }}
     - !Region
@@ -171,17 +171,17 @@ library_spec:
       regions: null
       parent_id: {{ read2_accession }}
     - !Region
-      region_id: barcode-3
+      region_id: barcode-1
       region_type: barcode
-      name: barcode-3
+      name: barcode-1
       sequence_type: onlist
       sequence: NNNNNNNN
       min_len: 8
       max_len: 8
       onlist: !Onlist
-        location: {{ barcode_3_location }}
-        filename: {{ barcode_3_url }}
-        md5: {{ barcode_3_md5 }}
+        location: {{ barcode_1_location }}
+        filename: {{ barcode_1_url }}
+        md5: {{ barcode_1_md5 }}
       regions: null
       parent_id: {{ read2_accession }}
     - !Region
