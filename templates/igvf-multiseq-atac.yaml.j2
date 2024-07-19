@@ -1,0 +1,153 @@
+!Assay
+seqspec_version: 0.1.1
+assay_id: 10x-ATAC-RNA-MULTI
+name: 10x-ATAC-RNA-MULTI/Illumina
+doi: https://doi.org/10.1038/s41592-019-0433-8
+date: 17 June 2019
+description: {{ identifier }} Single Cell Multiome ATAC
+modalities:
+- atac
+lib_struct: https://igvf.github.io/seqspec/
+library_protocol: Any
+library_kit: Illumina Truseq Dual Index
+sequence_protocol: {{ sequence_protocol }}
+sequence_kit: {{ sequence_kit }}
+sequence_spec:
+- !Read
+  read_id: {{ R1 }}
+  name: Read 1
+  modality: atac
+  primer_id: atac-nextera_read1
+  min_len: {{ R1_min_len }}
+  max_len: {{ R1_max_len }}
+  strand: pos
+- !Read
+  read_id: {{ I1 }}
+  name: Index 1 (i7 index)
+  modality: atac
+  primer_id: atac-nextera_read2
+  min_len: {{ I1_min_len }}
+  max_len: {{ I1_max_len }}
+  strand: pos
+- !Read
+  read_id: {{ R2 }}
+  name: Read 2 (technically Index 2 (i5 index))
+  modality: atac
+  primer_id: atac-nextera_read1
+  min_len: {{ R2_min_len }}
+  max_len: {{ R2_max_len }}
+  strand: neg
+- !Read
+  read_id: {{ R3 }}
+  name: Read 3 (technically Read 2)
+  modality: atac
+  primer_id: atac-nextera_read2
+  min_len: {{ R3_min_len }}
+  max_len: {{ R3_max_len }}
+  strand: neg
+library_spec:
+- !Region
+  parent_id: null
+  region_id: atac
+  region_type: atac
+  name: ATAC
+  sequence_type: joined
+  sequence: AATGATACGGCGACCACCGAGATCTACACNNNNNNNNNNNNNNNNCGCGTCTGTCGTCGGCAGCGTCAGATGTGTATAAGAGACAGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXCTGTCTCTTATACACATCTCCGAGCCCACGAGACNNNNNNNNATCTCGTATGCCGTCTTCTGCTTG
+  min_len: 352
+  max_len: 352
+  onlist: null
+  regions:
+  - !Region
+    parent_id: atac
+    region_id: atac-illumina_p5
+    region_type: illumina_p5
+    name: Illumina P5
+    sequence_type: fixed
+    sequence: AATGATACGGCGACCACCGAGATCTACAC
+    min_len: 29
+    max_len: 29
+    onlist: null
+    regions: null
+  - !Region
+    parent_id: atac
+    region_id: atac-cell_barcode
+    region_type: barcode
+    name: R2 Cell Barcode
+    sequence_type: onlist
+    sequence: NNNNNNNNNNNNNNNN
+    min_len: 16
+    max_len: 16
+    onlist: !Onlist
+      filename: {{ cell_barcode }}
+      md5: {{ cell_barcode_md5 }}
+      location: local
+    regions: null
+  - !Region
+    parent_id: atac
+    region_id: atac-linker
+    region_type: linker
+    name: atac linker
+    sequence_type: fixed
+    sequence: CGCGTCTG
+    min_len: 8
+    max_len: 8
+    onlist: null
+    regions: null
+  - !Region
+    parent_id: atac
+    region_id: atac-nextera_read1
+    region_type: nextera_read1
+    name: nextera_read1
+    sequence_type: fixed
+    sequence: TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG
+    min_len: 33
+    max_len: 33
+    onlist: null
+    regions: null
+  - !Region
+    parent_id: atac
+    region_id: gDNA
+    region_type: gdna
+    name: gDNA
+    sequence_type: random
+    sequence: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    min_len: 200
+    max_len: 200
+    onlist: null
+    regions: null
+  - !Region
+    parent_id: atac
+    region_id: atac-nextera_read2
+    region_type: nextera_read2
+    name: nextera_read2
+    sequence_type: fixed
+    sequence: CTGTCTCTTATACACATCTCCGAGCCCACGAGAC
+    min_len: 34
+    max_len: 34
+    onlist: null
+    regions: null
+  - !Region
+    parent_id: atac
+    region_id: atac-index7
+    region_type: index7
+    name: ATAC index7
+    sequence_type: onlist
+    sequence: NNNNNNNN
+    min_len: 8
+    max_len: 8
+    onlist: !Onlist
+      filename: {{ i7_single_index }}
+      md5: {{ i7_single_index_md5 }}
+      location: local
+    regions: null
+  - !Region
+    parent_id: atac
+    region_id: atac-illumina_p7
+    region_type: illumina_p7
+    name: Illumina P7
+    sequence_type: fixed
+    sequence: ATCTCGTATGCCGTCTTCTGCTTG
+    min_len: 24
+    max_len: 24
+    onlist: null
+    regions: null
