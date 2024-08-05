@@ -72,8 +72,8 @@ library_spec:
   name: rna
   sequence_type: joined
   sequence: AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCTXNNNNNNNNGTGGCCGATGTTTCGCATCGGCGTACGACTNNNNNNNNATCCACGTGCTTGAGACTGTGGNNNNNNNNNNNNNNNNNNAGATCGGAAGAGCACACGTCTGAACTCCAGTCACNNNNNNNNATCTCGTATGCCGTCTTCTGCTTG
-  min_len: {{ total_min_length }} 
-  max_len: {{ total_max_length }}
+  min_len: 0
+  max_len: 0
   onlist: null
   parent_id: null
   regions:
@@ -110,97 +110,97 @@ library_spec:
     onlist: null
     regions: null
     parent_id: rna
+#  - !Region
+#    region_id: {{ read2_accession }}
+#    region_type: named
+#    name: Read 2 barcode and linker sequence
+#    sequence_type: joined
+#    sequence: NNNNNNNNGTGGCCGATGTTTCGCATCGGCGTACGACTNNNNNNNNATCCACGTGCTTGAGACTGTGGNNNNNNNNNNNNNNNNNN
+#    min_len: {{ read2_min_length }}
+#    max_len: {{ read2_max_length }}
+#    onlist: null
+#    regions:
   - !Region
-    region_id: {{ read2_accession }}
-    region_type: named
-    name: Read 2 barcode and linker sequence
-    sequence_type: joined
-    sequence: NNNNNNNNGTGGCCGATGTTTCGCATCGGCGTACGACTNNNNNNNNATCCACGTGCTTGAGACTGTGGNNNNNNNNNNNNNNNNNN
-    min_len: {{ read2_min_length }}
-    max_len: {{ read2_max_length }}
+    region_id: barcode-1
+    region_type: barcode
+    name: barcode-1
+    sequence_type: onlist
+    sequence: NNNNNNNN
+    min_len: 8
+    max_len: 8
+    onlist: !Onlist
+      location: {{ barcode_1_location }}
+      filename: {{ barcode_1_url }}
+      md5: {{ barcode_1_md5 }}
+    regions: null
+    parent_id: rna
+  - !Region
+    region_id: linker-1
+    region_type: linker
+    name: linker-1
+    sequence_type: fixed
+    sequence: ATCCACGTGCTTGAGACTGTGG
+    min_len: 22
+    max_len: 22
     onlist: null
-    regions:
-    - !Region
-      region_id: barcode-3
-      region_type: barcode
-      name: barcode-3
-      sequence_type: onlist
-      sequence: NNNNNNNN
-      min_len: 8
-      max_len: 8
-      onlist: !Onlist
-        location: {{ barcode_3_location }}
-        filename: {{ barcode_3_url }}
-        md5: {{ barcode_3_md5 }}
-      regions: null
-      parent_id: {{ read2_accession }}
-    - !Region
-      region_id: linker-1
-      region_type: linker
-      name: linker-1
-      sequence_type: fixed
-      sequence: ATCCACGTGCTTGAGACTGTGG
-      min_len: 22
-      max_len: 22
-      onlist: null
-      regions: null
-      parent_id: {{ read2_accession }}
-    - !Region
-      region_id: barcode-2
-      region_type: barcode
-      name: barcode-2
-      sequence_type: onlist
-      sequence: NNNNNNNN
-      min_len: 8
-      max_len: 8
-      onlist: !Onlist
-        location: {{ barcode_2_location }}
-        filename: {{ barcode_2_url }}
-        md5: {{ barcode_2_md5 }}
-      regions: null
-      parent_id: {{ read2_accession }}
-    - !Region
-      region_id: linker-2
-      region_type: linker
-      name: linker-2
-      sequence_type: fixed
-      sequence: GTGGCCGATGTTTCGCATCGGCGTACGACT
-      min_len: 30
-      max_len: 30
-      onlist: null
-      regions: null
-      parent_id: {{ read2_accession }}
-    - !Region
-      region_id: barcode-1
-      region_type: barcode
-      name: barcode-1
-      sequence_type: onlist
-      sequence: NNNNNNNN
-      min_len: 8
-      max_len: 8
-      onlist: !Onlist
-        location: {{ barcode_1_location }}
-        filename: {{ barcode_1_url }}
-        md5: {{ barcode_1_md5 }}
-      regions: null
-      parent_id: {{ read2_accession }}
-    - !Region
-      region_id: umi
-      region_type: umi
-      name: umi
-      sequence_type: random
-      sequence: NNNNNNNNNN
-      min_len: 10
-      max_len: 10
-      onlist: null
-      regions: null
-      parent_id: {{ read2_accession }}
+    regions: null
+    parent_id: rna
+  - !Region
+    region_id: barcode-2
+    region_type: barcode
+    name: barcode-2
+    sequence_type: onlist
+    sequence: NNNNNNNN
+    min_len: 8
+    max_len: 8
+    onlist: !Onlist
+      location: {{ barcode_2_location }}
+      filename: {{ barcode_2_url }}
+      md5: {{ barcode_2_md5 }}
+    regions: null
+    parent_id: rna
+  - !Region
+    region_id: linker-2
+    region_type: linker
+    name: linker-2
+    sequence_type: fixed
+    sequence: GTGGCCGATGTTTCGCATCGGCGTACGACT
+    min_len: 30
+    max_len: 30
+    onlist: null
+    regions: null
+    parent_id: rna
+  - !Region
+    region_id: barcode-3
+    region_type: barcode
+    name: barcode-3
+    sequence_type: onlist
+    sequence: NNNNNNNN
+    min_len: 8
+    max_len: 8
+    onlist: !Onlist
+      location: {{ barcode_3_location }}
+      filename: {{ barcode_3_url }}
+      md5: {{ barcode_3_md5 }}
+    regions: null
+    parent_id: rna
+  - !Region
+    region_id: umi
+    region_type: umi
+    name: umi
+    sequence_type: random
+    sequence: NNNNNNNNNN
+    min_len: 10
+    max_len: 10
+    onlist: null
+    regions: null
+    parent_id: rna
   - !Region
     region_id: truseq_read2
     region_type: truseq_read2
     name: Truseq Read 2
     sequence_type: fixed
-    sequence: AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC
+    sequence: GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT
     min_len: 34
     max_len: 34
     onlist: null
