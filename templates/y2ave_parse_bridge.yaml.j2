@@ -43,7 +43,7 @@ library_spec:
   region_type: rna
   name: RNA
   sequence_type: joined
-  sequence: AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXNNNNNNNNGTGGCCGATGTTTCGCATCGGCGTACGACTNNNNNNNNATCCACGTGCTTGAGACTGTGGNNNNNNNNXXXXXXXXXXAGATCGGAAGAGCACACGTCTGAACTCCAGTCACNNNNNNNNATCTCGTATGCCGTCTTCTGCTTG
+  sequence: AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXNNNNNNNNATCCACGTGCTTGAGACTGTGGNNNNNNNNGTGGCCGATGTTTCGCATCGGCGTACGACTNNNNNNNNXXXXXXXXXXAGATCGGAAGAGCACACGTCTGAACTCCAGTCACNNNNNNNNATCTCGTATGCCGTCTTCTGCTTG
   min_len: 211
   max_len: 360
   onlist: null
@@ -83,17 +83,17 @@ library_spec:
     regions: null
     parent_id: rna
   - !Region
-    region_id: barcode-3
+    region_id: barcode-1(CB1)
     region_type: barcode
-    name: barcode-3
+    name: barcode-1
     sequence_type: onlist
     sequence: NNNNNNNN
     min_len: 8
     max_len: 8
     onlist: !Onlist
-      filename: CB23.txt
-      md5: 1452e8ef104e6edf686fab8956172072
       location: local
+      filename: CB1.txt
+      md5: 5c3b70034e9cef5de735dc9d4f3fdbde
     regions: null
     parent_id: rna
   - !Region
@@ -101,14 +101,14 @@ library_spec:
     region_type: linker
     name: linker-1
     sequence_type: fixed
-    sequence: GTGGCCGATGTTTCGCATCGGCGTACGACT
-    min_len: 30
-    max_len: 30
+    sequence: ATCCACGTGCTTGAGACTGTGG
+    min_len: 22
+    max_len: 22
     onlist: null
     regions: null
     parent_id: rna
   - !Region
-    region_id: barcode-2
+    region_id: barcode-2(CB23)
     region_type: barcode
     name: barcode-2
     sequence_type: onlist
@@ -122,27 +122,27 @@ library_spec:
     regions: null
     parent_id: rna
   - !Region
-    region_id: linker-3
+    region_id: linker-2
     region_type: linker
-    name: linker-3
+    name: linker-2
     sequence_type: fixed
-    sequence: ATCCACGTGCTTGAGACTGTGG
-    min_len: 22
-    max_len: 22
+    sequence: GTGGCCGATGTTTCGCATCGGCGTACGACT
+    min_len: 30
+    max_len: 30
     onlist: null
     regions: null
     parent_id: rna
   - !Region
-    region_id: barcode-1
+    region_id: barcode-3(CB23)
     region_type: barcode
-    name: barcode-1
+    name: barcode-3
     sequence_type: onlist
     sequence: NNNNNNNN
     min_len: 8
     max_len: 8
     onlist: !Onlist
-      filename: CB1.txt
-      md5: 5c3b70034e9cef5de735dc9d4f3fdbde
+      filename: CB23.txt
+      md5: 1452e8ef104e6edf686fab8956172072
       location: local
     regions: null
     parent_id: rna
