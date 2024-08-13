@@ -1,0 +1,183 @@
+!Assay
+seqspec_version: 0.1.1
+assay_id: Evercode-WT-mega-nanpore-v2
+doi: "https://docs.google.com/presentation/d/17yKh6xE5b9Mo4DaXx5uPvFZOIHOW0kbK-QsU2ECwx8c/edit#slide=id.g29abb1440dc_0_500"
+date: "13 August 2024"
+name: Parse Evercode mega WT v2 using nanopore
+description: split-pool ligation-based ONT transcriptome sequencing 
+modalities:
+  - rna
+lib_struct: ""
+library_protocol: {{ library_protocol }}
+library_kit: {{ library_kit }}
+sequence_protocol: {{ sequence_protocol }}
+sequence_kit: {{ sequence_kit }}
+sequence_spec:
+  - !Read
+    read_id: {{ read1_accession }}.fastq.gz
+    name: Fastq for {{ read1_accession }}
+    modality: rna
+    primer_id: ont-top
+    min_len: {{ read1_min_length }}
+    max_len: {{ read1_max_length }}
+    strand: pos
+    
+library_spec:
+- !Region
+  region_id: rna
+  region_type: rna
+  name: rna
+  sequence_type: joined
+  sequence: TTTTTTTTCCTGTACTTCGTTCAGTTACGTATTGCTAAGCAGTGGTATCAACGCAGAGTGAATGGGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXNNNNNNNNGTGGCCGATGTTTCGCATCGGCGTACGACTNNNNNNNNATCCACGTGCTTGAGACTGTGGNNNNNNNNXXXXXXXXXXGCAATACGTAACTGAACGAAGTACAGG
+  min_len: {{ total_min_length }}
+  max_len: {{ total_max_length }}
+  onlist: null
+  regions:
+# ONT adapter 36 bp no fixed orientation
+# LA_start-TSO_end
+# Primer Sequences from Ligation Adapter
+# https://community.nanoporetech.com/technical_documents/chemistry-technical-document/v/chtd_500_v1_revaq_07jul2016/adapter-sequences
+  - !Region
+    region_id: ont-top
+    region_type: custom_primer
+    name: ont-top
+    sequence_type: fixed
+    sequence: TTTTTTTTCCTGTACTTCGTTCAGTTACGTATTGCT
+    min_len: 36
+    max_len: 36
+    onlist: null
+    regions: null
+    parent_id: read.fastq.gz
+# TSO (30 bp)
+# FIXME check region_type
+  - !Region
+    region_id: tso
+    region_type: custom_primer
+    name: tso
+    sequence_type: fixed
+    sequence: AAGCAGTGGTATCAACGCAGAGTGAATGGG
+    min_len: 30
+    max_len: 30
+    onlist: null
+    regions: null
+    parent_id: read.fastq.gz
+# Target sequence
+# not sure what a good min/max length is. nanopore announced a
+# 2 million base pair read in 2018.
+# https://nanoporetech.com/about-us/news/longer-and-longer-dna-sequence-more-two-million-bases-now-achieved-nanopore
+# FIXME for nanopore should this be cDNA or rna?
+  - !Region
+    region_id: cDNA
+    region_type: cdna
+    name: cDNA
+    sequence_type: random
+    sequence: X
+    min_len: {{ read1_min_length }}
+    max_len: {{ read1_max_length-154 }}
+    onlist: null
+    regions: null
+    parent_id: read.fastq.gz
+# PolyA / randhex
+# FIXME There may be a known list of sequences
+# FIXME what should the region type be
+  - !Region
+    region_id: primer
+    region_type: custom_primer
+    name: primer
+    sequence_type: random
+    sequence: XXXXXX
+    min_len: 6
+    max_len: 6
+    onlist: null
+    regions: null
+    parent_id: read.fastq.gz
+  - !Region
+    region_id: barcode-1
+    region_type: barcode
+    name: barcode-1
+    sequence_type: onlist
+    sequence: NNNNNNNN
+    min_len: 8
+    max_len: 8
+    onlist: !Onlist
+      filename: barcode-1_onlist_v2.txt
+      md5: 5c3b70034e9cef5de735dc9d4f3fdbde
+      location: local
+    regions: null
+    parent_id: read.fastq.gz
+  - !Region
+    region_id: linker-1
+    region_type: linker
+    name: linker-1
+    sequence_type: fixed
+    sequence: GTGGCCGATGTTTCGCATCGGCGTACGACT
+    min_len: 30
+    max_len: 30
+    onlist: null
+    regions: null
+    parent_id: read.fastq.gz
+  - !Region
+    region_id: barcode-2
+    region_type: barcode
+    name: barcode-2
+    sequence_type: onlist
+    sequence: NNNNNNNN
+    min_len: 8
+    max_len: 8
+    onlist: !Onlist
+      filename: barcode-23_onlist.txt
+      md5: 1452e8ef104e6edf686fab8956172072
+      location: local
+    regions: null
+    parent_id: read.fastq.gz
+  - !Region
+    region_id: linker-2
+    region_type: linker
+    name: linker-2
+    sequence_type: fixed
+    sequence: ATCCACGTGCTTGAGACTGTGG
+    min_len: 22
+    max_len: 22
+    onlist: null
+    regions: null
+    parent_id: read.fastq.gz
+  - !Region
+    region_id: barcode-3
+    region_type: barcode
+    name: barcode-3
+    sequence_type: onlist
+    sequence: NNNNNNNN
+    min_len: 8
+    max_len: 8
+    onlist: !Onlist
+      filename: barcode-23_onlist.txt
+      md5: 1452e8ef104e6edf686fab8956172072
+      location: local
+    regions: null
+    parent_id: read.fastq.gz
+# UMI (10 bp)    
+  - !Region
+    region_id: umi
+    region_type: umi
+    name: umi
+    sequence_type: random
+    sequence: NNNNNNNNNN
+    min_len: 10
+    max_len: 10
+    onlist: null
+    regions: null
+    parent_id: read.fastq.gz
+# ONT adapter (36 or 27 bp)
+# FIXME what should the type actually be?
+# FIXME set sequence when known
+  - !Region
+    region_id: ont-bottom
+    region_type: custom_primer
+    sequence_type: fixed
+    sequence: GCAATACGTAACTGAACGAAGTACAGG
+    name: ont-bottom
+    min_len: 27
+    max_len: 27
+    onlist: null
+    regions: null
+    parent_id: read.fastq.gz
