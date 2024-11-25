@@ -1,5 +1,5 @@
 !Assay
-seqspec_version: 0.1.1
+seqspec_version: 0.3.0
 assay_id: 10x-ATAC-RNA-MULTI
 name: 10x-ATAC-RNA-MULTI/Illumina
 doi: https://doi.org/10.1038/s41592-019-0433-8
@@ -21,6 +21,15 @@ sequence_spec:
   min_len: {{ R1_min_len }}
   max_len: {{ R1_max_len }}
   strand: pos
+  files:
+    - !File
+      file_id: {{ R1 }}
+      filename: {{ R1 }}.fastq.gz
+      filetype: {{ R1_file_type }}
+      filesize: {{ R1_file_size }}
+      url: {{ R1_href }}
+      urltype: https
+      md5: {{ R1_md5sum }}
 - !Read
   read_id: {{ I1 }}
   name: Index 1 (i7 index)
@@ -29,6 +38,15 @@ sequence_spec:
   min_len: {{ I1_min_len }}
   max_len: {{ I1_max_len }}
   strand: pos
+  files:
+    - !File
+      file_id: {{ I1 }}
+      filename: {{ I1 }}.fastq.gz
+      filetype: fastq
+      filesize: {{ I1_file_size }}
+      url: {{ I1_href }}
+      urltype: https
+      md5: {{ I1_md5sum }}
 - !Read
   read_id: {{ R2 }}
   name: Read 2
@@ -37,6 +55,15 @@ sequence_spec:
   min_len: {{ R2_min_len }}
   max_len: {{ R2_max_len }}
   strand: neg
+  files:
+    - !File
+      file_id: {{ R2 }}
+      filename: {{ R2 }}.fastq.gz
+      filetype: fastq
+      filesize: {{ R2_file_size }}
+      url: {{ R2_href }}
+      urltype: https
+      md5: {{ R2_md5sum }}  
 library_spec:
 - !Region
   parent_id: null
@@ -80,9 +107,13 @@ library_spec:
     min_len: 16
     max_len: 16
     onlist: !Onlist
-      filename: {{ cell_barcode }}
+      file_id: {{ cell_barcode_file_id }}
+      filename: {{ cell_barcode_file_name }}
+      filetype: tsv
+      filesize: {{ cell_barcode_file_size }}
+      url: {{ cell_barcode_url }}
+      urltype: https
       md5: {{ cell_barcode_md5 }}
-      location: local
     regions: null
     parent_id: tag
   - !Region
@@ -116,9 +147,13 @@ library_spec:
     min_len: 8
     max_len: 8
     onlist: !Onlist
-      filename: {{ multi_barcode }}
-      md5: {{ multi_barcode_md5 }}
-      location: local
+      file_id: {{ multi_index_file_id }}
+      filename: {{ multi_index_file_name }}
+      filetype: tsv
+      filesize: {{ multi_index_file_size }}
+      url: {{ multi_index_url }}
+      urltype: https
+      md5: {{ multi_index_md5 }}
     regions: null
     parent_id: tag
   - !Region
@@ -141,9 +176,13 @@ library_spec:
     min_len: 8
     max_len: 8
     onlist: !Onlist
-      filename: {{ i7_multi_index }}
+      file_id: {{ i7_multi_index_file_id }}
+      filename: {{ i7_multi_index_file_name }}
+      filetype: tsv
+      filesize: {{ i7_multi_index_file_size }}
+      url: {{ i7_multi_index_url }}
+      urltype: https
       md5: {{ i7_multi_index_md5 }}
-      location: local
     regions: null
     parent_id: tag
   - !Region
