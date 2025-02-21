@@ -14,7 +14,7 @@ sequence_protocol: {{ sequence_protocol }}
 sequence_kit: {{ sequence_kit }}
 sequence_spec:
 - !Read
-  read_id: {{ R1 }}
+  read_id: {{ R1_file_id }}
   name: Read 1
   modality: atac
   primer_id: atac-nextera_read1
@@ -23,15 +23,15 @@ sequence_spec:
   strand: pos
   files:
     - !File
-      file_id: {{ R1 }}
-      filename: {{ R1 }}.fastq.gz
+      file_id: {{ R1_file_id }}
+      filename: {{ R1_file_name }}
       filetype: {{ R1_file_type }}
       filesize: {{ R1_file_size }}
-      url: {{ R1_href }}
+      url: {{ R1_url }}
       urltype: https
       md5: {{ R1_md5sum }}
 - !Read
-  read_id: {{ I1 }}
+  read_id: {{ I1_file_id }}
   name: Index 1 (i7 index)
   modality: atac
   primer_id: atac-nextera_read2
@@ -40,15 +40,15 @@ sequence_spec:
   strand: pos
   files:
     - !File
-      file_id: {{ I1 }}
-      filename: {{ I1 }}.fastq.gz
-      filetype: fastq
+      file_id: {{ I1_file_id }}
+      filename: {{ I1_file_name }}
+      filetype: {{ I1_file_type }}
       filesize: {{ I1_file_size }}
-      url: {{ I1_href }}
+      url: {{ I1_url }}
       urltype: https
       md5: {{ I1_md5sum }}
 - !Read
-  read_id: {{ R2 }}
+  read_id: {{ R2_file_id }}
   name: Read 2 (technically Index 2 (i5 index))
   modality: atac
   primer_id: atac-nextera_read1
@@ -57,15 +57,15 @@ sequence_spec:
   strand: neg
   files:
     - !File
-      file_id: {{ R2 }}
-      filename: {{ R2 }}.fastq.gz
-      filetype: fastq
+      file_id: {{ R2_file_id }}
+      filename: {{ R2_file_name }}
+      filetype: {{ R2_file_type }}
       filesize: {{ R2_file_size }}
-      url: {{ R2_href }}
+      url: {{ R2_url }}
       urltype: https
       md5: {{ R2_md5sum }}
 - !Read
-  read_id: {{ R3 }}
+  read_id: {{ R3_file_id }}
   name: Read 3 (technically Read 2)
   modality: atac
   primer_id: atac-nextera_read2
@@ -74,11 +74,11 @@ sequence_spec:
   strand: neg
   files:
     - !File
-      file_id: {{ R3 }}
-      filename: {{ R3 }}.fastq.gz
-      filetype: fastq
+      file_id: {{ R3_file_id }}
+      filename: {{ R3_file_name }}
+      filetype: {{ R3_file_type }}
       filesize: {{ R3_file_size }}
-      url: {{ R3_href }}
+      url: {{ R3_url }}
       urltype: https
       md5: {{ R3_md5sum }}
 library_spec:
