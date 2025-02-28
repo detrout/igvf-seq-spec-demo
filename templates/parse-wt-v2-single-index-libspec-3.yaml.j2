@@ -62,27 +62,6 @@ sequence_spec:
 # R2 is "illumina adapter"
 # R1 is "illumina adapter"
 
-# Since fastq_link is currently a property of a region it needs to be the length
-# of the read. However I think the cDNA region size is actually the fragment
-# size and is frequently much longer than the read length.
-# Maybe describing the read length 
-# For the cDNA minum and maximum sizes I looked at the average cDNA
-# length from our metadata and rounded up and down some.
-# this is my fragment sized specification region.
-#  - !Region
-#    region_id: cDNA
-#    region_type: cdna
-#    name: cDNA
-#    sequence_type: random
-#    sequence: X
-#    min_len: 500
-#    max_len: 2000
-#    onlist: null
-#    regions: null
-#    parent_id: rna
-#
-# TODO is this using illumina truseq? or something else?
-
 library_spec:
 - !Region
   region_id: rna

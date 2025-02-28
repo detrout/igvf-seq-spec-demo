@@ -1,14 +1,14 @@
 !Assay
 seqspec_version: 0.3.0
-assay_id: Evercode-WT-v2-dual-index
-name: Parse Evercode WT v2 using dual illumina multiplex index
+assay_id: Evercode-WT-mega-v2-single-index
+name: Parse Evercode mega WT v2 using single illumina multiplex index
 doi: https://www.protocols.io/view/evercode-wt-mega-v2-2-1-8epv5xxrng1b/v1?step=21
 date: 08 November 2023
 description: split-pool ligation-based transcriptome sequencing
 modalities:
   - rna
 # can lib_struct be optional?
-lib_struct: ""
+lib_struct: "https://igvf.github.io/seqspec/"
 library_protocol: {{ library_protocol }}
 library_kit: {{ library_kit }}
 sequence_protocol: {{ sequence_protocol }}
@@ -34,14 +34,13 @@ sequence_spec:
         url: {{ R1_url }}
         urltype: https
         md5: {{ R1_md5sum }}
-    
   - !Read
     read_id: {{ R2_file_id }}.fastq.gz
     name: Read 2 fastq for {{ R2_file_id }}
     modality: rna
     primer_id: truseq_read2
     min_len: {{ R2_min_length }}
-    max_len: {{ R2_max_length }}
+    max_len: {{ R2_min_length }}
     strand: neg
     files:
       - !File
@@ -117,13 +116,14 @@ library_spec:
     min_len: 8
     max_len: 8
     onlist: !Onlist
-      file_id: IGVFFI0924TKJO
-      filename: IGVFFI0924TKJO.txt.gz
+      file_id: IGVFFI2591OFQO
+      filename: IGVFFI2591OFQO.txt.gz
       filetype: tsv
-      filesize: 339
-      url: https://api.data.igvf.org/tabular-files/IGVFFI0924TKJO/@@download/IGVFFI0924TKJO.txt.gz
+      filesize: 622
+      location: remote
+      url: https://api.data.igvf.org/tabular-files/IGVFFI2591OFQO/@@download/IGVFFI2591OFQO.txt.gz
       urltype: https
-      md5: 6d5016e63f121b6a64fb3907dd83f358
+      md5: 5c3b70034e9cef5de735dc9d4f3fdbde
     regions: null
     parent_id: rna
   - !Region
@@ -150,6 +150,7 @@ library_spec:
       filename: IGVFFI1138MCVX.txt.gz
       filetype: tsv
       filesize: 341
+      location: remote
       url: https://api.data.igvf.org/tabular-files/IGVFFI1138MCVX/@@download/IGVFFI1138MCVX.txt.gz
       urltype: https
       md5: 1452e8ef104e6edf686fab8956172072
@@ -179,6 +180,7 @@ library_spec:
       filename: IGVFFI1138MCVX.txt.gz
       filetype: tsv
       filesize: 341
+      location: remote
       url: https://api.data.igvf.org/tabular-files/IGVFFI1138MCVX/@@download/IGVFFI1138MCVX.txt.gz
       urltype: https
       md5: 1452e8ef104e6edf686fab8956172072
