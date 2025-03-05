@@ -85,8 +85,9 @@ def get_template_from_protocols(protocols):
     # share-seq
     if ProtocolsIO.share_seq in protocols:
         return "uci-share-seq-rna.yaml.j2"
-    
+
     raise ValueError("Unrecognized splitseq protocols {}".format(protocols))
+
 
 def get_library_kit_from_protocols(protocols):
     if ProtocolsIO.ont_library_prep in protocols:
@@ -117,7 +118,7 @@ def get_library_kit_from_protocols(protocols):
         illumina_kit_name = "dual index"
     else:
         raise ValueError("Missing illumina protocol")
-        
+
     if len(set(protocols).intersection(single_cell_protocols)) > 0:
         library_protocol = "single-cell RNA sequencing assay (OBI:0002631)"
     elif len(set(protocols).intersection(single_nucleus_protocols)) > 0:
@@ -129,4 +130,4 @@ def get_library_kit_from_protocols(protocols):
         "library_protocol": library_protocol,
         "library_kit": f"{parse_kit_name} {illumina_kit_name}"
     }
-    return context    
+    return context
