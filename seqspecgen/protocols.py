@@ -83,7 +83,7 @@ def get_template_from_protocols(protocols):
             raise ValueError("Unrecognized library protocol")
 
     # share-seq
-    if ProtocolsIO.shareq_seq in protocols:
+    if ProtocolsIO.share_seq in protocols:
         return "uci-share-seq-rna.yaml.j2"
     
     raise ValueError("Unrecognized splitseq protocols {}".format(protocols))
