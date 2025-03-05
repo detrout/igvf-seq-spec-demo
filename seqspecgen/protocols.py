@@ -100,8 +100,8 @@ def get_library_kit_from_protocols(protocols):
         # we need to tell rna & atac apart
         return {
             "library_protocol": "single-nucleus RNA sequencing assay (OBI:0003109)",
-            "library_kit": "cDNA Exome Capture v1.0.1",
-            "sequence_kit": "ONT Ligation Sequencing Kit V14",
+            "library_kit": "custom",
+            "sequence_kit": "NextSeq 2000 P4 XLEAP-SBS Reagent Kit",
         }
 
     if ProtocolsIO.splitseq_100k_v2 in protocols:
