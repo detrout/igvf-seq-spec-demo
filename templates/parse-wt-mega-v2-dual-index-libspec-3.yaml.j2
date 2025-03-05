@@ -85,12 +85,14 @@ library_spec:
     onlist: null
     regions: null
     parent_id: rna
+# These libraries were built with the standard illumina multiplexing
+# index, but they were demultiplexed before uploading.
   - !Region
     region_id: index5
     region_type: index5
     name: Illumina i5 barcode
-    sequence_type: onlist
-    sequence: NNNNNNNNN
+    sequence_type: random
+    sequence: XXXXXXXXX
     min_len: 9
     max_len: 9
     regions: null
@@ -219,16 +221,16 @@ library_spec:
     onlist: null
     regions: null
     parent_id: rna
-  # Illumina single end read index
+# These libraries were built with the standard illumina multiplexing
+# index, but they were demultiplexed before uploading.
   - !Region
     region_id: index7
     region_type: index7
     name: Illumina barcode BC4
-    sequence_type: onlist
-    sequence: NNNNNNNN
+    sequence_type: random
+    sequence: XXXXXXXX
     min_len: 8
     max_len: 8
-    # Leaving the onlist out of the seqspec since it's not available.
     onlist: null
     regions: null
     parent_id: rna
