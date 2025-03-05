@@ -131,3 +131,30 @@ def get_library_kit_from_protocols(protocols):
         "library_kit": f"{parse_kit_name} {illumina_kit_name}"
     }
     return context
+
+
+def get_preferred_assay_title_from_protocols(protocols):
+    if ProtocolsIO.splitseq_100k_v2 in protocols:
+        return "Parse SPLiT-seq"
+    elif ProtocolsIO.splitseq_1M_v2 in protocols:
+        return "Parse SPLiT-seq"
+    else:
+        raise ValueError("Unrecognized protocol")
+
+
+def get_onlist_barcodes_from_protocols(protocols):
+    if ProtocolsIO.splitseq_100k_v2 in protocols:
+        return ["IGVFFI0924TKJO", "IGVFFI1138MCVX"]
+    elif ProtocolsIO.splitseq_1M_v2 in protocols:
+        return ["IGVFFI2591OFQO", "IGVFFI1138MCVX"]
+    else:
+        raise ValueError("Unrecognized barcode protocol")
+
+
+def get_onlist_method_from_protocols(protocols):
+    if ProtocolsIO.splitseq_100k_v2 in protocols:
+        return "multi"
+    elif ProtocolsIO.splitseq_1M_v2 in protocols:
+        return "multi"
+    else:
+        raise ValueError("Unrecognized protocol")
