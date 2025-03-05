@@ -1,8 +1,9 @@
 import json
-from jsonschema import Draft4Validator
 from pathlib import Path
 import seqspec
+from seqspec.seqspec_check import check
 from seqspec.seqspec_index import index as tool_index
+
 
 def load_default_seqspec_schema():
     seqspec_path = Path(seqspec.__file__).parent
@@ -18,10 +19,8 @@ def seqspec_validate(spec, schema=None):
     if schema is None:
         schema = load_default_seqspec_schema()
 
-    validator = Draft4Validator(schema)
-
-    for idx, error in enumerate(validator.iter_errors(spec), 1):
-        print(f"[{idx}] {error.message}")
+    fake_fn = Path("test.yaml")
+    return check(spec, fake_fn)
 
 
 def generate_seqspec_tool_index(spec, row):
