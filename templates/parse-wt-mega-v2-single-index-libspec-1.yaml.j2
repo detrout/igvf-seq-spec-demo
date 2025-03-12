@@ -18,7 +18,7 @@ sequence_kit: {{ sequence_kit }}
 # example I don't really know
 sequence_spec:
   - !Read
-    read_id: {{ read1_accession }}.fastq.gz
+    read_id: {{ read1_accession }}
     name: Read 1 fastq for {{ read1_accession }}
     modality: rna
     primer_id: truseq_read1
@@ -26,7 +26,7 @@ sequence_spec:
     max_len: {{ read1_max_length }}
     strand: pos
   - !Read
-    read_id: {{ read2_accession }}.fastq.gz
+    read_id: {{ read2_accession }}
     name: Read 2 fastq for {{ read2_accession }}
     modality: rna
     primer_id: truseq_read2
