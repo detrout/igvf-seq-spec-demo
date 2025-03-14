@@ -1,0 +1,313 @@
+!Assay
+seqspec_version: 0.3.0
+assay_id: share-seq-rna
+name: SHARE-seq RNA
+doi: https://doi.org/10.1016/j.cell.2020.09.056
+date: 23 October 2020
+description: RNA reads from simultaneous high-throughput ATAC and RNA expression
+modalities:
+- rna
+lib_struct: https://teichlab.github.io/scg_lib_structs/methods_html/SHARE-seq.html
+library_protocol: single-nucleus RNA sequencing assay (OBI:0003109)
+library_kit: Illumina Truseq Dual Index
+sequence_protocol: {{ sequence_protocol }}
+sequence_kit: {{ sequence_kit }}
+sequence_spec:
+# cell barcode      
+- !Read
+  read_id: {{ I1_file_id }}
+  name: Index 1 (i7 index)
+  modality: rna
+  primer_id: rna-truseq_read2
+  min_len: {{ I1_min_length }}
+  max_len: {{ I1_max_length }}
+  strand: pos
+  files:
+    - !File
+      file_id: {{ I1_file_id }}
+      filename: {{ I1_file_name }}
+      filetype: {{ I1_file_type }}
+      filesize: {{ I1_file_size }}
+      url: {{ I1_url }}
+      urltype: https
+      md5: {{ I1_md5sum }}
+- !Read
+  read_id: {{ R1_file_id }}
+  name: Read 1
+  modality: rna
+  primer_id: rna-truseq_read1
+  min_len: {{ R1_min_length }}
+  max_len: {{ R1_max_length }}
+  strand: pos
+  files:
+    - !File
+      file_id: {{ R1_file_id }}
+      filename: {{ R1_file_name }}
+      filetype: {{ R1_file_type }}
+      filesize: {{ R1_file_size }}
+      url: {{ R1_url }}
+      urltype: https
+      md5: {{ R1_md5sum }}
+#- !Read
+#  read_id: {{ I2_file_id }}
+#  name: Index read 2
+#  modality: rna
+#  primer_id: rna-truseq_read2
+#  min_len: {{ I2_min_length }}
+#  max_len: {{ I2_max_length }}
+#  strand: neg
+#  files:
+#    - !File
+#      file_id: {{ I2_file_id }}
+#      filename: {{ I2_file_name }}
+#      filetype: {{ I2_file_type }}
+#      filesize: {{ I2_file_size }}
+#      url: {{ I2_url }}
+#      urltype: https
+#      md5: {{ I2_md5sum }}
+- !Read
+  read_id: {{ R2_file_id }}
+  name: Read 2
+  modality: rna
+  primer_id: rna-truseq_read2
+  min_len: 50
+  max_len: 50
+  strand: neg
+  files:
+    - !File
+      file_id: {{ R2_file_id }}
+      filename: {{ R2_file_name }}
+      filetype: {{ R2_file_type }}
+      filesize: {{ R2_file_size }}
+      url: {{ R2_url }}
+      urltype: https
+      md5: {{ R2_md5sum }}
+library_spec:
+- !Region
+  parent_id: null
+  region_id: rna
+  region_type: rna
+  name: SHARE-seq RNA
+  sequence_type: joined
+  sequence: 
+  min_len: 
+  max_len: 
+  onlist: null
+  regions:
+  - !Region
+    parent_id: rna
+    region_id: rna-illumina_p5
+    region_type: illumina_p5
+    name: Illumina P5
+    sequence_type: fixed
+    sequence: AATGATACGGCGACCACCGAGATCTACAC
+    min_len: 29
+    max_len: 29
+    onlist: null
+    regions: null
+#  # This is the illumina index included for documentation purposes
+#  # it was not submitted.
+  - !Region
+    parent_id: rna
+    region_id: rna-index5
+    region_type: index5
+    name: i5 index
+    sequence_type: random
+    sequence: XXXXXXXXXX
+    min_len: 10
+    max_len: 10
+    onlist: null
+    regions: null
+  - !Region
+    parent_id: rna
+    region_id: rna-truseq_read1
+    region_type: truseq_read1
+    name: RNA Truseq Read 1
+    sequence_type: fixed
+    sequence: TCTTTCCCTACACGACGCTCTTCCGATCT
+    min_len: 29
+    max_len: 29
+    onlist: null
+    regions: null
+    parent_id: rna
+  - !Region
+    parent_id: rna
+    region_id: {{ R1_file_id }}_R1
+    region_type: cdna
+    name: RNA Read 1 sequence
+    sequence_type: random
+    sequence: X
+    min_len: {{ R1_min_length }}
+    max_len: {{ R1_max_length }}
+    onlist: null
+    regions: null
+  - !Region
+    parent_id: rna
+    region_id: {{ R2_file_id }}_R2
+    region_type: 
+    name: umi and buffer poly A region
+    sequence_type: joined
+    sequence: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXXXXXXXXXX
+    min_len: 50
+    max_len: 50
+    onlist: null
+    regions:
+    - !Region
+      parent_id: rna
+      region_id: poly_A
+      region_type: poly_A
+      name: poly_A
+      sequence_type: fixed
+      sequence: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      min_len: 40
+      max_len: 40
+      onlist: null
+      regions: null
+    - !Region
+      parent_id: rna
+      region_id: umi
+      region_type: umi
+      name: umi
+      sequence_type: random
+      sequence: XXXXXXXXXX
+      min_len: 10
+      max_len: 10
+      onlist: null
+      regions: null
+  - !Region
+    parent_id: rna
+    region_id: rna-truseq_read2
+    region_type: truseq_read2
+    name: Truseq Read 2
+    sequence_type: fixed
+    sequence: GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT
+    min_len: 34
+    max_len: 34
+    onlist: null
+    regions: null
+
+  - !Region
+    region_id: {{ I1_file_id }}_I1
+    region_type: named
+    name: rna Raw Cell Barcode
+    sequence_type: joined
+    sequence: TCGGACGATCATGGGNNNNNNNNCAAGTATGCAGCGCGCTCAAGCACGTGGATNNNNNNNNAGTCGTACGCCGATGCGAAACATCGGCCACNNNNNNNN
+    min_len: 99
+    max_len: 99
+    onlist: null
+    parent_id: rna
+    regions:
+    - !Region
+      region_id: rna-linker1
+      region_type: linker
+      name: linker1
+      sequence_type: fixed
+      sequence: TCGGACGATCATGGG
+      min_len: 15
+      max_len: 15
+      onlist: null
+      regions: null
+      parent_id: {{ I1_file_id }}_I1
+    - !Region
+      region_id: rna-cell-barcode1
+      region_type: barcode
+      name: rna Cell Barcode 1
+      sequence_type: onlist
+      sequence: NNNNNNNN
+      min_len: 8
+      max_len: 8
+      onlist: !Onlist
+        file_id: IGVFFI2668ZFEB
+        filename: IGVFFI2668ZFEB.tsv.gz
+        filetype: tsv
+        filesize: 329
+        location: remote
+        url: https://data.igvf.org/tabular-files/IGVFFI2668ZFEB/@@download/IGVFFI2668ZFEB.tsv.gz
+        urltype: https
+        md5: 073f131a4a831ad2fdfe981e8f7a86b5        
+      regions: null
+      parent_id: {{ I1_file_id }}_I1
+    - !Region
+      region_id: rna-linker2
+      region_type: linker
+      name: linker2
+      sequence_type: fixed
+      sequence: CAAGTATGCAGCGCGCTCAAGCACGTGGAT
+      min_len: 30
+      max_len: 30
+      onlist: null
+      regions: null
+      parent_id: {{ I1_file_id }}_I1
+    - !Region
+      region_id: rna-cell-barcode2
+      region_type: barcode
+      name: rna Cell Barcode 2
+      sequence_type: onlist
+      sequence: NNNNNNNN
+      min_len: 8
+      max_len: 8
+      onlist: !Onlist
+        file_id: IGVFFI2668ZFEB
+        filename: IGVFFI2668ZFEB.tsv.gz
+        filetype: tsv
+        filesize: 329
+        location: remote
+        url: https://data.igvf.org/tabular-files/IGVFFI2668ZFEB/@@download/IGVFFI2668ZFEB.tsv.gz
+        urltype: https
+        md5: 073f131a4a831ad2fdfe981e8f7a86b5        
+      regions: null
+      parent_id: {{ I1_file_id }}_I1
+    - !Region
+      region_id: rna-linker3
+      region_type: linker
+      name: linker3
+      sequence_type: fixed
+      sequence: AGTCGTACGCCGATGCGAAACATCGGCCAC
+      min_len: 30
+      max_len: 30
+      onlist: null
+      regions: null
+      parent_id: {{ I1_file_id }}_I1
+    - !Region
+      region_id: rna-cell-barcode3
+      region_type: barcode
+      name: rna Cell Barcode 3
+      sequence_type: onlist
+      sequence: NNNNNNNN
+      min_len: 8
+      max_len: 8
+      onlist: !Onlist
+        file_id: IGVFFI2668ZFEB
+        filename: IGVFFI2668ZFEB.tsv.gz
+        filetype: tsv
+        filesize: 329
+        location: remote
+        url: https://data.igvf.org/tabular-files/IGVFFI2668ZFEB/@@download/IGVFFI2668ZFEB.tsv.gz
+        urltype: https
+        md5: 073f131a4a831ad2fdfe981e8f7a86b5        
+      regions: null
+      parent_id: {{ I1_file_id }}_I1
+#  # This is the illumina index included for documentation purposes
+#  # it was not submitted.
+#  - !Region
+#    parent_id: rna
+#    region_id: rna-index7
+#    region_type: index7
+#    name: Truseq Read 2
+#    sequence_type: random
+#    sequence: XXXXXXXXXX
+#    min_len: 10
+#    max_len: 10
+#    onlist: null
+#    regions: null
+  - !Region
+    parent_id: rna
+    region_id: rna-illumina_p7
+    region_type: illumina_p7
+    name: Illumina P7
+    sequence_type: fixed
+    sequence: ATCTCGTATGCCGTCTTCTGCTTG
+    min_len: 24
+    max_len: 24
+    onlist: null
+    regions: null
