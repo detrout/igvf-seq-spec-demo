@@ -57,7 +57,7 @@ def filter_protocols_for_lookups(protocols):
     return protocols
 
 
-def get_template_from_protocols(protocols):
+def get_template_from_protocols(protocols, assay_term_id):
     # the only thing different between the 100k and 1M is the 1M has more round 1 barcodes
     # which is handled by get_barcodes_from_protocols
     # parse v2 mega 96 well
@@ -84,7 +84,12 @@ def get_template_from_protocols(protocols):
 
     # share-seq
     if ProtocolsIO.share_seq in protocols:
-        return "uci-share-seq-rna.yaml.j2"
+        if assay_term_id == "/assay-terms/OBI_0003109/":
+            return "uci-share-seq-rna.yaml.j2"
+        elif assay_term_id == "/assay-terms/OBI_0002762/":
+            return "uci-share-seq-atac.yaml.j2"
+        else:
+            raise ValueError("Unrecognized assay term for shareseq {}".format(assay_term_id))
 
     raise ValueError("Unrecognized splitseq protocols {}".format(protocols))
 
