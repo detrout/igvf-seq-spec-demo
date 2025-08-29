@@ -14,7 +14,7 @@ class TestProtocols(TestCase):
         r = filter_protocols_for_lookups(p)
         self.assertEqual(r, [ProtocolsIO.adrenal_nuclei_prep])
 
-    def test_get_template_from_protocls(self):
+    def test_get_template_from_protocols_rna(self):
         parse_single_1M_v2 = [
             ProtocolsIO.splitseq_1M_v2,
             ProtocolsIO.splitseq_single_index,
