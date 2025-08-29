@@ -26,7 +26,7 @@ class TestProtocols(TestCase):
             ProtocolsIO.male_gonads_nuclei_prep,
         ]
         parse_single_100k_v2 = [
-            ProtocolsIO.splitseq_1M_v2,
+            ProtocolsIO.splitseq_100k_v2,
             ProtocolsIO.splitseq_single_index,
             ProtocolsIO.heart_nuclei_prep,
         ]
@@ -48,7 +48,7 @@ class TestProtocols(TestCase):
         data = [
             (parse_single_1M_v2, "parse-wt-mega-v2-single-index-libspec-3.yaml.j2"),
             (parse_dual_1M_v2, "parse-wt-mega-v2-dual-index-libspec-3.yaml.j2"),
-            (parse_single_100k_v2, "parse-wt-single-index-libspec-3.yaml.j2"),
+            (parse_single_100k_v2, "parse-wt-v2-single-index-libspec-3.yaml.j2"),
             (parse_dual_100k_v2, "parse-wt-v2-dual-index-libspec-3.yaml.j2"),
             (parse_ont_100k_v2, "parse-wt-v2-nanopore.yaml.j2"),
             (uci_share_seq, "uci-share-seq-rna.yaml.j2"),
