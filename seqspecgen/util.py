@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 import seqspec
 from seqspec.seqspec_check import check
-from seqspec.seqspec_index import index as tool_index
+from seqspec.seqspec_index import seqspec_index as tool_index
 
 
 def load_default_seqspec_schema():
@@ -20,6 +20,7 @@ def seqspec_validate(spec, schema=None):
         schema = load_default_seqspec_schema()
 
     fake_fn = Path("test.yaml")
+    # some branches need this , for_igvf=True
     return check(spec, fake_fn)
 
 
@@ -38,4 +39,3 @@ def generate_seqspec_tool_index(spec, row):
         args[tool] = tool_index(spec, modality, file_ids, idtype, tool)
 
     return args
-        
