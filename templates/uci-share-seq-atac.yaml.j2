@@ -15,7 +15,7 @@ sequence_kit: {{ sequence_kit }}
 sequence_spec:
 # cell barcode      
 - !Read
-  read_id: {{ I1_file_id }}
+  read_id: {{ I1_file_id }}.fastq.gz
   name: Index 1 (i7 index)
   modality: atac
   primer_id: atac-truseq_read2
@@ -32,7 +32,7 @@ sequence_spec:
       urltype: https
       md5: {{ I1_md5sum }}
 - !Read
-  read_id: {{ R1_file_id }}
+  read_id: {{ R1_file_id }}.fastq.gz
   name: Read 1
   modality: atac
   primer_id: atac-truseq_read1
@@ -49,7 +49,7 @@ sequence_spec:
       urltype: https
       md5: {{ R1_md5sum }}
 - !Read
-  read_id: {{ R2_file_id }}
+  read_id: {{ R2_file_id }}.fastq.gz
   name: Read 2
   modality: atac
   primer_id: atac-truseq_read2
