@@ -53,4 +53,7 @@ class TestProtocols(TestCase):
             (parse_ont_100k_v2, "parse-wt-v2-nanopore.yaml.j2"),
             (uci_share_seq, "uci-share-seq-rna.yaml.j2"),
         ]
-        for p, e in 
+        for p, e in data:
+            template = get_template_from_protocols(p, "/assay-terms/OBI_0003109/")
+            self.assertEqual(template, e)
+
