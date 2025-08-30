@@ -67,7 +67,7 @@ def get_template_from_protocols(protocols, assay_term_id):
         elif ProtocolsIO.splitseq_dual_index in protocols:
             return "parse-wt-mega-v2-dual-index-libspec-3.yaml.j2"
         elif ProtocolsIO.ont_library_prep in protocols:
-            return "parse-wt-mega-v2-nanopore.yaml.j2"
+            return "parse-wt-any-v2-nanopore.yaml.j2"
         else:
             raise ValueError("Unrecognized library protocol")
 
@@ -78,7 +78,7 @@ def get_template_from_protocols(protocols, assay_term_id):
         elif ProtocolsIO.splitseq_dual_index in protocols:
             return "parse-wt-v2-dual-index-libspec-3.yaml.j2"
         elif ProtocolsIO.ont_library_prep in protocols:
-            return "parse-wt-v2-nanopore.yaml.j2"
+            return "parse-wt-any-v2-nanopore.yaml.j2"
         else:
             raise ValueError("Unrecognized library protocol")
 
