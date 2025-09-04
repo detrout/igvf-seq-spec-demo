@@ -24,6 +24,9 @@ class ProtocolsIO(enum.StrEnum):
     male_gonads_nuclei_prep ="https://www.protocols.io/view/protocol-to-isolate-and-fix-nuclei-from-flash-froz-5qpvo3837v4o/v1"
     female_gonads_nuclei_prep = "https://www.protocols.io/view/protocol-to-isolate-and-fix-nuclei-from-flash-froz-36wgq3e3ylk5/v1"
 
+    # other groups
+    corces_10x = "https://www.protocols.io/view/chromium-next-gem-single-cell-multiome-atac-gene-e-d5k784zn"
+
 
 single_cell_protocols = set([ProtocolsIO.pbmc_cell_prep])
 
@@ -91,10 +94,26 @@ def get_template_from_protocols(protocols, assay_term_id):
         else:
             raise ValueError("Unrecognized assay term for shareseq {}".format(assay_term_id))
 
+    # Corces
+    if ProtocolsIO.corces_10x in protocols:
+        if assay_term_id == "/assay-terms/OBI_0003109/":
+            return "igvf-multiseq-rna.yaml.j2"
+        elif assay_term_id == "/assay-terms/OBI_0002762/":
+            return "igvf-multiseq-atac.yaml.j2"
+        else:
+            raise ValueError("Unrecognized assay term for multiseq {}".format(assay_term_id))
+
     raise ValueError("Unrecognized splitseq protocols {}".format(protocols))
 
 
 def get_library_kit_from_protocols(protocols):
+    if ProtocolsIO.corces_10x in protocols:
+        return {
+            "library_protocol":  "single-nucleus RNA sequencing assay (OBI:0002762)",
+            "library_kit": "Illumina Truseq Dual Index",
+            "sequence_kit": "NovaSeq X Series 10B Reagent Kit",
+        }
+
     if ProtocolsIO.ont_library_prep in protocols:
         return {
             "library_protocol": "Any",
