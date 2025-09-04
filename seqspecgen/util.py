@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 import seqspec
 from seqspec.seqspec_check import check
-from seqspec.seqspec_index import seqspec_index as tool_index
+from seqspec.seqspec_index import seqspec_index, format_index
 
 
 def load_default_seqspec_schema():
@@ -36,6 +36,7 @@ def generate_seqspec_tool_index(spec, row):
         file_ids = [Path(row[x]["href"]).name for x in row]
         idtype = "file"
 
-        args[tool] = tool_index(spec, modality, file_ids, idtype, tool)
+        regions = seqspec_index(spec, modality, file_ids, idtype)
+        args[tool] = format_index(regions, tool)
 
     return args
