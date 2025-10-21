@@ -27,7 +27,7 @@ def seqspec_validate(spec, schema=None):
 def generate_seqspec_tool_index(spec, row):
     tools = {
         "atac": "chromap",
-        "rna": "kb",
+        "rna": "kb-single",
         #("rna", "starsolo", ("RNA_fastq_R1", "RNA_fastq_R2")),
     }
     args = {}
