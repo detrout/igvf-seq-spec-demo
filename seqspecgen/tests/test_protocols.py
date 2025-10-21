@@ -46,7 +46,7 @@ class TestProtocols(TestCase):
             (parse_dual_1M_v2, "parse-wt-mega-v2-dual-index-libspec-3.yaml.j2"),
             (parse_single_100k_v2, "parse-wt-v2-single-index-libspec-3.yaml.j2"),
             (parse_dual_100k_v2, "parse-wt-v2-dual-index-libspec-3.yaml.j2"),
-            (parse_ont_100k_v2, "parse-wt-v2-nanopore.yaml.j2"),
+            (parse_ont_100k_v2, "parse-wt-any-v2-nanopore.yaml.j2"),
         ]
         for p, e in data:
             template = get_template_from_protocols(p, "/assay-terms/OBI_0003109/")
