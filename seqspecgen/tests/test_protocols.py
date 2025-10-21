@@ -3,7 +3,6 @@ from unittest import TestCase
 from ..protocols import (
     filter_protocols_for_lookups,
     get_template_from_protocols,
-    get_library_kit_from_protocols,
     ProtocolsIO,
 )
 
