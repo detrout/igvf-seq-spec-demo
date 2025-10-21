@@ -67,4 +67,3 @@ class TestProtocols(TestCase):
         for p, a, e in data:
             template = get_template_from_protocols(p, a)
             self.assertEqual(template, e)
-
