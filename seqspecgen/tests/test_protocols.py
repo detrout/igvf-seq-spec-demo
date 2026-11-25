@@ -2,6 +2,7 @@ from unittest import TestCase
 
 from ..protocols import (
     filter_protocols_for_lookups,
+    get_mergelist_file_from_protocols,
     get_template_from_protocols,
     ProtocolsIO,
 )
@@ -66,3 +67,23 @@ class TestProtocols(TestCase):
         for p, a, e in data:
             template = get_template_from_protocols(p, a)
             self.assertEqual(template, e)
+
+    def test_get_mergelist_file_from_protocols(self):
+        parse_dual_1M_v2 = [
+            ProtocolsIO.splitseq_1M_v2,
+            ProtocolsIO.splitseq_dual_index,
+            ProtocolsIO.male_gonads_nuclei_prep,
+        ]
+        parse_single_100k_v2 = [
+            ProtocolsIO.splitseq_100k_v2,
+            ProtocolsIO.splitseq_single_index,
+            ProtocolsIO.heart_nuclei_prep,
+        ]
+        self.assertEqual(
+            get_mergelist_file_from_protocols(parse_dual_1M_v2),
+            "IGVFFI4834TCML"
+        )
+        self.assertEqual(
+            get_mergelist_file_from_protocols(parse_single_100k_v2),
+            "IGVFFI4529PWCF"
+        )

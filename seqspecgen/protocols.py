@@ -185,3 +185,15 @@ def get_onlist_method_from_protocols(protocols):
         return "multi"
     else:
         raise ValueError("Unrecognized protocol")
+
+
+def get_mergelist_file_from_protocols(protocols):
+    if ProtocolsIO.splitseq_100k_v2 in protocols:
+        # ali-mortazavi:mergelist1_n192_v4
+        return "IGVFFI4529PWCF"
+    elif ProtocolsIO.splitseq_1M_v2 in protocols:
+        # ali-mortazavi:mergelist1_n96_v4
+        return "IGVFFI4834TCML"
+    else:
+        raise ValueError("Unrecognized barcode protocols {}".format(
+            ", ".join(protocols)))
