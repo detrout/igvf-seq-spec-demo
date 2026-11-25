@@ -137,9 +137,11 @@ def get_library_kit_from_protocols(protocols):
         raise ValueError("Missing splitseq protocol")
 
     if ProtocolsIO.splitseq_single_index in protocols:
-        illumina_kit_name = "single index"
+        index_kit_name = "single index"
     elif ProtocolsIO.splitseq_dual_index in protocols:
-        illumina_kit_name = "dual index"
+        index_kit_name = "dual index"
+    elif ProtocolsIO.ont_library_prep in protocols:
+        index_kit_name = "dual index"
     else:
         raise ValueError("Missing illumina protocol")
 
@@ -152,8 +154,9 @@ def get_library_kit_from_protocols(protocols):
 
     context = {
         "library_protocol": library_protocol,
-        "library_kit": f"{parse_kit_name} {illumina_kit_name}"
+        "library_kit": f"{parse_kit_name} {index_kit_name}"
     }
+
     return context
 
 
